@@ -4,7 +4,7 @@
 
 **Current = v2, the scroll-film ("Under the Head").** Circle asked for "animated and immersive" mid-build; v1 (static, `work/static-v1.html`) is parked and superseded. v2 follows the `scroll-film-studio` skill, **Lane C** (the client's own footage, $0 generated).
 
-**Where:** `C:\Users\Circl\magic-island\site\` — `index.html` (one file), `assets/` (stills, logo, textures), `frames/` (332 desktop WebP at 1600w, 17 MB) + `frames/phone/` (332 at 960w, 8.5 MB), `frames/cuts.json`, `frames/luma.json`. Preview config `magic-island` (:8864) in `~/.claude/.claude/launch.json`. **NOT deployed. NOT sent. No repo yet.** Live would be the usual `stationonemain-source.github.io/magic-island` (noindex) on Circle's call; push `site/` only (25 MB with frames).
+**Where:** `C:\Users\Circl\magic-island\site\` — `index.html` (one file), `assets/` (stills, logo, textures), `frames/` (332 desktop WebP at 1600w, 17 MB) + `frames/phone/` (332 at 960w, 8.5 MB), `frames/cuts.json`, `frames/luma.json`. Preview config `magic-island` (:8864) in `~/.claude/.claude/launch.json`. **LIVE (noindex) since 2026-10-18 at https://stationonemain-source.github.io/magic-island/** — public repo `stationonemain-source/magic-island`, root = this `site/` folder (git repo lives here, branch main, GitHub Pages from main `/`). link-preflight PASS 10-18. **NOT sent to the client.** To update: edit here, commit, `git push` (GCM, no prompt).
 
 **The film (one scroll, 620vh desktop / 560vh phone, seven hard-cut shots from their three June-2026 Vimeo promos):**
 1. Aerial over the freeway and the building, dusk (hero beat, gold-dust ambient layer fades out over the first 7%)
