@@ -48,8 +48,10 @@ p{margin:0 0 1em}
 .btn.solid:hover{background:var(--gold-2)}
 
 /* ---------- fixed chrome ---------- */
-.top{position:fixed;inset:0 0 auto 0;z-index:40;color:var(--cream);transition:color .35s}
-.top.on-light{color:#102029}
+.top{position:fixed;inset:0 0 auto 0;z-index:40;color:var(--cream);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top:before{content:"";position:absolute;inset:0 0 -48px 0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(5,12,18,.8),rgba(5,12,18,0));transition:opacity .3s}
+.top.solid{background:rgba(10,22,32,.96);border-bottom-color:var(--line)}
+.top.solid:before{opacity:0}
 .top .wrap{display:flex;align-items:center;gap:28px;height:84px}
 .brand{display:flex;align-items:center;gap:14px;color:currentColor}
 .brand img{width:54px;height:54px}
@@ -57,11 +59,8 @@ p{margin:0 0 1em}
 .brand small{display:block;font-family:var(--serif-d);font-size:10px;letter-spacing:.32em;color:var(--gold);margin-top:3px}
 nav.main{margin-left:auto;display:flex;gap:26px}
 nav.main a{font-family:var(--serif-d);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:currentColor;white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.35)}
-.top.on-light nav.main a{text-shadow:none}
 nav.main a:hover{color:var(--gold-2)}
 .top .tel{font-family:var(--serif-d);font-size:13px;letter-spacing:.1em;color:currentColor;white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.35)}
-.top.on-light .tel{text-shadow:none}
-.top.on-light .brand small{color:#6b4f14}
 @media (min-width:561px){.b-hero .kicker{white-space:nowrap}}
 .menu-btn{display:none;margin-left:auto;background:rgba(13,30,43,.55);border:1px solid var(--line);color:var(--cream);font-family:var(--serif-d);letter-spacing:.2em;font-size:12px;padding:10px 14px;text-transform:uppercase}
 @media (max-width:1240px){nav.main{gap:18px} nav.main a{letter-spacing:.14em;font-size:12px}}
@@ -79,10 +78,10 @@ nav.main a:hover{color:var(--gold-2)}
 @keyframes cue{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1)}100%{transform:scaleY(.2);transform-origin:bottom}}
 
 /* ---------- the film ---------- */
-.film{position:relative;height:620vh}
+.film{position:relative;height:460vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#07131c}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stage #amb{pointer-events:none}
+.stage .scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to top,rgba(5,12,18,.9) 0%,rgba(5,12,18,.6) 32%,rgba(5,12,18,0) 64%),linear-gradient(to right,rgba(5,12,18,.72) 0%,rgba(5,12,18,.4) 38%,rgba(5,12,18,0) 62%)}
 .stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(5,12,18,.55) 100%)}
 .stage .fade{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;z-index:3}
 .stage .cut-dark{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:2}
@@ -95,22 +94,18 @@ nav.main a:hover{color:var(--gold-2)}
 
 .beat{position:absolute;z-index:4;opacity:0;pointer-events:none;will-change:opacity,transform;max-width:min(680px,88vw)}
 .beat h1,.beat h2{color:var(--cream);text-shadow:0 2px 26px rgba(0,0,0,.6)}
-.beat .kicker{color:var(--gold-2);text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.beat .kicker{color:var(--gold-2);text-shadow:0 1px 14px rgba(0,0,0,.95)}
 .beat p{font-size:clamp(18px,1.6vw,23px);color:var(--cream);text-shadow:0 1px 12px rgba(0,0,0,.7);margin-top:14px;max-width:46ch}
 .beat.on{pointer-events:auto}
 .b-hero{left:var(--gut);bottom:14vh}
-.b-hero h1{font-size:clamp(34px,5.4vw,74px);max-width:13ch}
+.b-hero h1{font-size:clamp(30px,min(5.2vw,6.6vh),74px);max-width:15ch}
 .b-hero h1 em{font-style:normal;color:var(--gold-2)}
 .b-hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-.b-l{left:var(--gut);top:50%;transform:translateY(-50%)}
-.b-r{right:var(--gut);top:50%;transform:translateY(-50%);text-align:right}
-.b-r p{margin-left:auto}
-.b-c{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
-.b-c p{margin-left:auto;margin-right:auto}
-.beat h2{font-size:clamp(30px,4.6vw,64px)}
+.b-low{left:var(--gut);bottom:14vh}
+.beat h2{font-size:clamp(28px,min(4.6vw,7vh),64px)}
 .beat h2 small{display:block;font-size:.42em;letter-spacing:.3em;color:var(--gold-2);margin-bottom:10px;font-weight:600}
 .b-fin{left:var(--gut);bottom:16vh}
-.b-fin h2{font-size:clamp(30px,4.4vw,60px);max-width:14ch}
+.b-fin h2{font-size:clamp(28px,min(4.4vw,6.6vh),60px);max-width:18ch}
 .b-fin .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 
 /* ---------- after-film ---------- */
@@ -155,8 +150,7 @@ nav.main a:hover{color:var(--gold-2)}
 .events li span{color:var(--gold-2);font-family:var(--serif-d);font-size:13px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:4px}
 .events .pics{display:grid;gap:14px}
 .events .pics img{width:100%;object-fit:cover}
-.events .pics img:first-child{aspect-ratio:16/8}
-.events .pics img:last-child{aspect-ratio:16/7}
+.events .pics img{aspect-ratio:4/3}
 .band{background:var(--wine);padding:clamp(48px,6vw,88px) 0}
 .band .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px)}
 .band h2{font-size:clamp(26px,3vw,38px)}
@@ -207,6 +201,7 @@ footer a:hover{color:var(--gold-2)}
   .menu-btn{display:inline-block}
   .events .grid>div:first-child{order:2}
   .scroll-cue{display:none}
+  .stage .scrim{background:linear-gradient(to top,rgba(5,12,18,.94) 0%,rgba(5,12,18,.74) 48%,rgba(5,12,18,0) 82%)}
 }
 @media (max-width:560px){
   body{font-size:18px}
@@ -214,14 +209,12 @@ footer a:hover{color:var(--gold-2)}
   .brand img{width:44px;height:44px}
   .brand b{font-size:13px}
   nav.main{top:70px}
-  .film{height:560vh}
+  .film{height:420vh}
   .beat{max-width:calc(100vw - 2*var(--gut))}
   .b-hero{bottom:12vh}
   .b-hero h1{font-size:clamp(30px,9vw,40px)}
-  .b-l,.b-r{text-align:left;left:var(--gut);right:var(--gut);top:auto;bottom:16vh;transform:none}
-  .b-r p{margin-left:0}
-  .b-c{left:var(--gut);right:var(--gut);transform:translateY(-50%);text-align:left}
-  .b-c p{margin-left:0}
+  .b-hero .kicker{font-size:11px;letter-spacing:.16em;white-space:nowrap}
+  .b-low,.b-fin{bottom:13vh}
   .beat h2{font-size:clamp(28px,8.4vw,40px)}
   .chapter{bottom:16px}
   .timeline li{grid-template-columns:72px 1fr}
@@ -264,45 +257,26 @@ footer a:hover{color:var(--gold-2)}
 <section class="film" id="film" aria-label="Magic Island, filmed">
   <div class="stage" id="stage">
     <canvas id="cv" aria-hidden="true"></canvas>
-    <canvas id="amb" aria-hidden="true"></canvas>
+    <div class="scrim"></div>
     <div class="cut-dark" id="cutDark"></div>
     <div class="fade" id="fade"></div>
 
-    <div class="beat b-hero" data-in="-0.1" data-peak="0" data-out="0.17">
+    <div class="beat b-hero" data-in="-0.1" data-peak="0" data-out="0.16">
       <p class="kicker">2215 Southwest Freeway · Houston</p>
       <h1>The pharaoh on the freeway is <em>opening his doors again.</em></h1>
       <p>Houston's house of magic opened in 1984, closed after Hurricane Ike, and has been rebuilt behind the same walls.</p>
       <div class="cta"><a class="btn solid" href="#signup">Be first to know</a><a class="btn" href="https://magicislandhtx.com/event-request/">Plan an event</a></div>
     </div>
 
-    <div class="beat b-r" data-in="0.25" data-peak="0.29" data-out="0.335">
-      <h2><small>Inside</small>The pharaohs<br>kept watch.</h2>
-      <p>The Egyptian rooms, the columns and the murals stayed through sixteen dark years. They were restored, not replaced.</p>
-    </div>
-
-    <div class="beat b-l" data-in="0.35" data-peak="0.39" data-out="0.445">
-      <h2><small>Drinks</small>A new bar,<br>polished and waiting.</h2>
-      <p>Cocktails before the show, a covered patio after it.</p>
-    </div>
-
-    <div class="beat b-r" data-in="0.455" data-peak="0.48" data-out="0.515">
-      <h2><small>Dinner</small>Green walls,<br>velvet chairs.</h2>
-      <p>Dining rooms where a magician stops at your table between courses.</p>
-    </div>
-
-    <div class="beat b-l" data-in="0.53" data-peak="0.58" data-out="0.70">
+    <div class="beat b-low" data-in="0.26" data-peak="0.32" data-out="0.60">
       <h2><small>Disappearing acts</small>The intimate<br>theatre upstairs.</h2>
       <p>Vegas-style magic, comedians and touring acts, the way the original drew performers from around the world.</p>
     </div>
 
-    <div class="beat b-c" data-in="0.715" data-peak="0.745" data-out="0.78">
-      <h2>Every night ends<br>in applause.</h2>
-    </div>
-
-    <div class="beat b-fin" data-in="0.80" data-peak="0.86" data-out="2">
-      <p class="kicker">The ballroom</p>
-      <h2>Taking bookings before the doors open.</h2>
-      <p>Holiday parties, weddings, company dinners and expos. Opening date to be announced; the team is hiring now.</p>
+    <div class="beat b-fin" data-in="0.70" data-peak="0.78" data-out="2">
+      <p class="kicker">Opening soon</p>
+      <h2>Dinner, drinks and disappearing acts.</h2>
+      <p>Opening date to be announced. Join the list to hear it first, or book the ballroom for a private event now.</p>
       <div class="cta"><a class="btn solid" href="#signup">Be first to know</a><a class="btn" href="https://magicislandhtx.com/event-request/">Request an event date</a></div>
     </div>
 
@@ -384,7 +358,6 @@ footer a:hover{color:var(--gold-2)}
     </div>
     <div class="pics rv">
       <img src="assets/toast-1200.webp" srcset="assets/toast-800.webp 800w, assets/toast-1200.webp 1200w" sizes="(max-width:980px) 100vw, 55vw" width="1920" height="842" alt="Guests at a round table in the ballroom raise their glasses as a server pours" loading="lazy">
-      <img src="assets/pharaoh-statue-1200.webp" srcset="assets/pharaoh-statue-800.webp 800w, assets/pharaoh-statue-1200.webp 1200w" sizes="(max-width:980px) 100vw, 55vw" width="1920" height="1080" alt="A gold and lapis pharaoh bust beside a framed print in the green dining room" loading="lazy">
     </div>
   </div>
 </section>
@@ -458,13 +431,13 @@ if(FLAT) document.documentElement.classList.add('flat');
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- film config ---------- */
-var FRAME_COUNT=332, CUTS=[79,113,149,171,236,260];       // from frames/cuts.json
-var CHAPTERS=[['I','Arrive'],['II','The rooms'],['III','The bar'],['IV','Dinner'],['V','The show'],['VI','Applause'],['VII','The ballroom']];
-var FOCUS=[0.5,0.34,0.62,0.6,0.5,0.42,0.5];            // phone crop centre per shot
+var FRAME_COUNT=137, CUTS=[34,112];                     // from frames/cuts.json
+var HOLD=0.84;                                           // film plays over 0..HOLD, last frame holds under the finale
+var CHAPTERS=[['I','Arrive'],['II','The show'],['III','The finale']];
+var FOCUS=[0.5,0.5,0.5];                              // phone frames are pre-cropped to portrait in work/ (crop x: facade 585, levitation 969, doves 700 of 1920)
 var PHONE=matchMedia('(pointer:coarse)').matches && innerWidth<900;
 var DIR=PHONE?'frames/phone/':'frames/';
 var DPR=Math.min(devicePixelRatio||1, PHONE?1.5:1.25);
-var LUMA=null; fetch('frames/luma.json').then(function(r){return r.json()}).then(function(j){LUMA=j; onLight=null; dirty=true;}).catch(function(){});
 function shotOf(i){var s=0;for(var k=0;k<CUTS.length;k++) if(i>=CUTS[k]) s=k+1;return s}
 function sameShot(a,b){return shotOf(a)===shotOf(b)}
 
@@ -478,7 +451,6 @@ var beats=[].slice.call(document.querySelectorAll('.beat')).map(function(el){ret
 function size(){
   var w=stage.clientWidth, h=stage.clientHeight;
   cv.width=Math.round(w*DPR); cv.height=Math.round(h*DPR);
-  if(amb){amb.width=Math.round(w*Math.min(DPR,1)); amb.height=Math.round(h*Math.min(DPR,1));}
   dirty=true;
 }
 
@@ -489,7 +461,7 @@ function src(i){var n=String(i+1); while(n.length<4) n='0'+n; return DIR+'f_'+n+
 function decodeOne(i){
   if(!loaded[i]||decoded.has(i)||decoding.has(i)) return;
   decoding.add(i);
-  imgs[i].decode().then(function(){decoding.delete(i); if(Math.abs(i-center)<=2*WARM){decoded.add(i); if(i===want) dirty=true;}}).catch(function(){decoding.delete(i)});
+  imgs[i].decode().then(function(){decoding.delete(i); if(Math.abs(i-center)<=2*WARM){decoded.add(i); if(sameShot(i,want)&&Math.abs(i-want)<=2*WARM) dirty=true;}}).catch(function(){decoding.delete(i)});
 }
 function warm(c){
   center=c; var started=0;
@@ -505,11 +477,18 @@ function load(i){
   im.onerror=function(){ nLoaded++; pump(); };
   im.src=src(i);
 }
-var next=1, inflight=0, MAXF=10;
-function pump(){ inflight=0; while(next<FRAME_COUNT && (next-nLoaded)<MAXF){ load(next++); } }
+// fetch the unrequested frame nearest to where the viewer is, so a fast scroll never outruns the film
+var requested=new Uint8Array(FRAME_COUNT), nReq=1, MAXF=8;
+function pump(){
+  while(nReq<FRAME_COUNT && (nReq-nLoaded)<MAXF){
+    var c=Math.round(target), best=-1, bd=1e9;
+    for(var i=0;i<FRAME_COUNT;i++){ if(!requested[i]){ var d=Math.abs(i-c)+(i<c?0.5:0); if(d<bd){bd=d;best=i;} } }
+    requested[best]=1; nReq++; load(best);
+  }
+}
 
 /* ---------- drawing ---------- */
-var currentFrame=0, target=0, dirty=true, progress=0, curShot=-1, onLight=false;
+var currentFrame=0, target=0, dirty=true, progress=0, curShot=-1;
 function nearestDecoded(i){
   for(var d=0; d<=2*WARM; d++){
     if(decoded.has(i-d)&&sameShot(i,i-d)) return i-d;
@@ -529,11 +508,7 @@ function draw(){
   var ia=nearestDecoded(a); if(ia<0) return;
   cover(imgs[ia],1,shotOf(ia));
   if(t>0.02 && ia===a && decoded.has(a+1) && sameShot(a,a+1)) cover(imgs[a+1],t,shotOf(a));
-  setHeader(ia); filmUI(ia);
-}
-function setHeader(i){
-  var light=LUMA? LUMA[i]>138 : false;
-  if(light!==onLight){ onLight=light; top.classList.toggle('on-light',light); }
+  filmUI(ia);
 }
 function filmUI(i){
   var s=shotOf(i);
@@ -557,26 +532,10 @@ function beatsAt(p){
     if(a!==b.a){
       b.a=a; b.el.style.opacity=a.toFixed(3);
       var dy=(1-a)*18*(p<b.peak?1:-1);
-      var base=b.el.classList.contains('b-l')||b.el.classList.contains('b-r')?'translateY(-50%) ':b.el.classList.contains('b-c')?'translate(-50%,-50%) ':'';
-      if(PHONE&&(b.el.classList.contains('b-l')||b.el.classList.contains('b-r'))) base='';
-      b.el.style.transform=base+'translateY('+dy.toFixed(1)+'px)';
+      b.el.style.transform='translateY('+dy.toFixed(1)+'px)';
       b.el.classList.toggle('on',a>0.6);
     }
   }
-}
-
-/* ---------- ambient gold dust over the opening ---------- */
-var amb=document.getElementById('amb'), actx=amb.getContext('2d'), dust=[], sprite=null, ambAlpha=1;
-function mkSprite(){ sprite=document.createElement('canvas'); sprite.width=sprite.height=32; var c=sprite.getContext('2d'); var g=c.createRadialGradient(16,16,0,16,16,16); g.addColorStop(0,'rgba(255,232,170,1)'); g.addColorStop(.35,'rgba(230,200,119,.55)'); g.addColorStop(1,'rgba(230,200,119,0)'); c.fillStyle=g; c.fillRect(0,0,32,32); }
-function mkDust(){ dust=[]; var n=PHONE?60:120; for(var i=0;i<n;i++) dust.push({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,ph:Math.random()*6.28,sp:.00004+Math.random()*.00008}); }
-function drawAmb(t,p){
-  if(RM||!sprite) return;
-  var a=Math.max(0,1-p/0.07);
-  if(a<=0){ if(ambAlpha>0){ actx.clearRect(0,0,amb.width,amb.height); ambAlpha=0;} return; }
-  ambAlpha=a; actx.clearRect(0,0,amb.width,amb.height);
-  for(var i=0;i<dust.length;i++){ var d=dust[i]; d.y-=d.sp*d.z*16; d.x+=Math.sin(t*0.0004+d.ph)*0.00008; if(d.y<-0.02){d.y=1.02;d.x=Math.random();}
-    var tw=.55+.45*Math.sin(t*0.002+d.ph*3), s=(6+14*d.z)*(amb.width/1400);
-    actx.globalAlpha=a*tw*(.35+.5*d.z); actx.drawImage(sprite,d.x*amb.width-s/2,d.y*amb.height-s/2,s,s); }
 }
 
 /* ---------- tick ---------- */
@@ -590,17 +549,17 @@ function tick(t){
   if(lastT){ var dl=t-lastT; if(dl>maxDelta) maxDelta=dl; if(t-lastLog>2000){ if(Q.has('jank')) console.log('rAF max Δ '+maxDelta.toFixed(0)+'ms'); maxDelta=0; lastLog=t; } }
   lastT=t;
   progress=computeProgress();
-  target=progress*(FRAME_COUNT-1);
+  target=Math.min(1,progress/HOLD)*(FRAME_COUNT-1);
   var k=(RM||FLAT||JUMP!==null)?1:0.14;
   if(Math.abs(target-currentFrame)>0.01){ currentFrame+=(target-currentFrame)*k; if(Math.abs(target-currentFrame)<0.01) currentFrame=target; dirty=true; }
-  warm(Math.round(currentFrame));
+  warm(Math.round(currentFrame)); if(ready||nLoaded>0) pump();
   if(dirty){ draw(); dirty=false; }
   beatsAt(progress);
   fade.style.opacity=Math.max(0,Math.min(1,(progress-0.93)/0.07)).toFixed(3);
   var inFilm=progress<0.995 && film.getBoundingClientRect().bottom>innerHeight*0.5;
   chapter.classList.toggle('show',inFilm&&ready);
   cue.classList.toggle('show',ready&&progress<0.03);
-  drawAmb(t,progress);
+  top.classList.toggle('solid', film.getBoundingClientRect().bottom<=top.offsetHeight);
 }
 
 /* ---------- reveals after the film ---------- */
@@ -618,9 +577,8 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* ---------- boot ---------- */
 addEventListener('resize',size); size();
-if(FLAT){ document.querySelectorAll('.stage,.film').forEach(function(el){ el.style.height=(el.classList.contains('film')? innerHeight*6.2 : innerHeight)+'px'; }); }
-mkSprite(); mkDust();
-load(0);
+if(FLAT){ document.querySelectorAll('.stage,.film').forEach(function(el){ el.style.height=(el.classList.contains('film')? innerHeight*4.6 : innerHeight)+'px'; }); }
+requested[0]=1; load(0);
 var boot=setInterval(function(){
   if(!loaded[0]) return; clearInterval(boot);
   imgs[0].decode().then(function(){ decoded.add(0); draw(); }).catch(function(){}).then(function(){
@@ -628,10 +586,10 @@ var boot=setInterval(function(){
     var settle=setInterval(function(){
       var goal=JUMP!==null? +JUMP||0 : null;
       if(goal!==null) scrollTo(0,goal);
-      var p=computeProgress(), w=Math.round(p*(FRAME_COUNT-1));
+      var p=computeProgress(), w=Math.round(Math.min(1,p/HOLD)*(FRAME_COUNT-1));
       currentFrame=target=(goal!==null||FLAT)? w : currentFrame;
       warm(w);
-      var enough = nLoaded>=Math.min(FRAME_COUNT,40) || nLoaded>=FRAME_COUNT;
+      var enough = nLoaded>=Math.min(FRAME_COUNT,12);
       if(enough && (decoded.has(w) || nLoaded>=FRAME_COUNT)){
         clearInterval(settle); if(goal!==null||FLAT){ currentFrame=target=w; draw(); beatsAt(p); }
         loader.classList.add('off'); ready=true; ldTxt.textContent='';

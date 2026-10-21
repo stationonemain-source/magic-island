@@ -2,21 +2,19 @@
 
 **What:** a spec homepage for Magic Island, 2215 Southwest Fwy, Houston (magicislandhtx.com), so the pitch shows the fix, not just the audit. Built 2026-10-17/18. The audit is in the vault: `Circle-Vault/Station/2026-10-17 Magic Island HTX - site dissection.md`. Memory: `magic-island-houston-prospect`.
 
-**Current = v2, the scroll-film ("Under the Head").** Circle asked for "animated and immersive" mid-build; v1 (static, `work/static-v1.html`) is parked and superseded. v2 follows the `scroll-film-studio` skill, **Lane C** (the client's own footage, $0 generated).
+**Current = v3 (2026-10-21), the scroll-film cut down to three clean shots.** v2 (seven shots, 2026-10-18) is superseded; its frames are parked in `work/frames-v2-old/`. v1 static is `work/static-v1.html`.
 
-**Where:** `C:\Users\Circl\magic-island\site\` — `index.html` (one file), `assets/` (stills, logo, textures), `frames/` (332 desktop WebP at 1600w, 17 MB) + `frames/phone/` (332 at 960w, 8.5 MB), `frames/cuts.json`, `frames/luma.json`. Preview config `magic-island` (:8864) in `~/.claude/.claude/launch.json`. **LIVE (noindex) since 2026-10-18 at https://stationonemain-source.github.io/magic-island/** — public repo `stationonemain-source/magic-island`, root = this `site/` folder (git repo lives here, branch main, GitHub Pages from main `/`). link-preflight PASS 10-18. **NOT sent to the client.** To update: edit here, commit, `git push` (GCM, no prompt).
+**Why v3:** Circle's review 10-21 — no sparkles (our gold-dust canvas layer is deleted; the agency's baked sparkle VFX ruled out the bar, dining and bust shots), and the phone crop of the old doves clip showed the agency's burned-in "Houston's Landmark Restaurant is Returning" title. The bar/couple/cocktail shots in their promos look like stock, not the venue — deliberately NOT used.
 
-**The film (one scroll, 620vh desktop / 560vh phone, seven hard-cut shots from their three June-2026 Vimeo promos):**
-1. Aerial over the freeway and the building, dusk (hero beat, gold-dust ambient layer fades out over the first 7%)
-2. The gold pharaoh bust in the green room — "Inside · The pharaohs kept watch."
-3. The back-bar glassware — "Drinks · A new bar, polished and waiting."
-4. Dining room focus-pull — "Dinner · Green walls, velvet chairs."
-5. Levitation on the mural stage — "Disappearing acts · The intimate theatre upstairs."
-6. Doves and applause — "Every night ends in applause."
-7. The ballroom in service — finale "The ballroom · Taking bookings before the doors open." with both CTAs, then a fade to ink that hands off to the content.
-Cuts dip to 55% black for ±3 frames so they read as cuts. Chapter readout bottom-left (I–VII), scroll cue bottom-right, header flips to dark text on bright frames via luma.json. Continuity gesture: every shot pushes forward/down.
+**Where:** `C:\Users\Circl\magic-island\site\` — `index.html` (one file), `assets/`, `frames/` (137 desktop WebP at 1600w, 6.4 MB) + `frames/phone/` (137 portrait WebP 680×980, 3.2 MB, pre-cropped from the 1080p master: crop x facade 585 · levitation 969 · doves 700 of 1920). Preview config `magic-island` (:8864) in `~/.claude/.claude/launch.json`. **LIVE (noindex) at https://stationonemain-source.github.io/magic-island/** — public repo `stationonemain-source/magic-island`, root = this `site/` folder, GitHub Pages from main `/`. **NOT sent to the client.** To update: edit here, commit, `git push`.
 
-**Cut sheet (seconds in the source files, all text-free):** c1 v…785 4.5–7.75 · c2 v…785 12.0–13.4 · c3 v…785 13.5–15.0 · c4 v…786 8.0–8.9 · c5 v…786 0–2.7 · c6 v…785 0–1.0 · c7 v…787 7.0–10.0 cropped to 1920×842 (the film's "EVENTS" caption sits in the bottom 22%). Clips in `work/clips/`, 24 fps. Rebuild: `CUTS=1 EVERY=1 WIDTH=1600 PHONE_WIDTH=960 Q=70 bash ~/.claude/skills/scroll-film-studio/scripts/assemble.sh work/clips site/frames c1-aerial c2-statue c3-glass c4-dining c5-levitate c6-doves c7-ballroom`.
+**The film (460vh desktop / 420vh phone, three hard-cut shots, all filmed at the real building, no text, no sparkles):**
+1. Drone drift onto the front facade and the pharaoh head (785 6.70–7.82) — hero beat.
+2. The levitation on the mural stage (786 0.00–2.58) — "Disappearing acts · The intimate theatre upstairs."
+3. Doves released on the same stage (786 2.63–3.45) — finale "Opening soon · Dinner, drinks and disappearing acts." with both CTAs.
+Frames play over scroll 0–0.84 (`HOLD`), the last frame holds under the finale, then a fade to ink. All captions sit lower-left over a bottom + left scrim. Header has a top scrim over the film and turns solid (`.solid`) once the film has scrolled past. Frames load nearest-to-viewer first (fast scrollers never freeze the film); the loader lifts after 12 frames. Clips in `work/clips2/`; rebuild desktop: `CUTS=1 EVERY=1 WIDTH=1600 Q=70 bash ~/.claude/skills/scroll-film-studio/scripts/assemble.sh work/clips2 site/frames s1-facade s2-levitate s3-doves`, then rebuild `frames/phone` with the ffmpeg crop above (assemble's own phone set is a centre crop at 960w and looks soft).
+
+**Stills:** `dining-room-*` was despeckled 10-21 (OpenCV inpaint of the agency sparkles; originals in `work/assets-orig/`); faint red flare ghosts remain at 100%. The pharaoh-bust still is no longer used on the page (blurry + sparkles).
 
 **Source material (all theirs):** footage pulled through the public Vimeo player config (`work/src/vimeo_*.mp4`, 1080p); the agency's sparkle VFX remain in shots 2–4. Logo = their round badge, trimmed, never redrawn. Textures = their own licensed stock at 7%. Commons CC0 2021 exteriors in `work/src/` unused. Their media library also holds "VAGHA Night Club" and "COFFEEINE" logos (Elementor demo leftovers) — a pitch line.
 
@@ -26,6 +24,8 @@ Cuts dip to 55% black for ±3 frames so they read as cuts. Chapter readout botto
 
 **⚠ Owner must confirm before anything goes live:** the rooms and their names; "magician at the table"; "every night ends in applause" (a line, not a promise); the 2018 purchase year; the phone still rings; the events contact; use of their promo footage on the site; a privacy policy (footer link is `#`); the sign-up form is NOT wired (shows a preview message on submit and says so).
 
-**Verified 2026-10-18 (scripts/verify.js, isolated Playwright Chromium 1228 via `CHROME_PATH`, never the everyday Chrome):** `__ready` fires; `?jump` shots at every beat at 1905×1000 and 390×844 (`work/shots2/`); `?flat` 1440 capture; no console errors; Cinzel + EB Garamond loaded; no horizontal overflow; jank p95 ≈ 14 ms, one ~160 ms spike per run on the software GPU (startup decode burst, not the scrub). **Not yet scrubbed in a real desktop Chrome on Windows** (the ImageBitmap crash class is avoided by design: plain `<img>` + `decode()`).
+**Verified 2026-10-21 (v3):** isolated Playwright Chromium 1228 (phone 390×844, tablet 820×1180, desktop 1280×800, throttled 9 Mbps / 150 ms) — film reaches every shot, ready ≈ 2.8 s phone / 3.4 s desktop, no console errors, no horizontal overflow, header solid below the film. NB the Claude browser pane never resolves `img.decode()` while hidden — a hung loader there is the pane, not the site.
+
+**Verified 2026-10-18 (v2) (scripts/verify.js, isolated Playwright Chromium 1228 via `CHROME_PATH`, never the everyday Chrome):** `__ready` fires; `?jump` shots at every beat at 1905×1000 and 390×844 (`work/shots2/`); `?flat` 1440 capture; no console errors; Cinzel + EB Garamond loaded; no horizontal overflow; jank p95 ≈ 14 ms, one ~160 ms spike per run on the software GPU (startup decode burst, not the scrub). **Not yet scrubbed in a real desktop Chrome on Windows** (the ImageBitmap crash class is avoided by design: plain `<img>` + `decode()`).
 
 **Footer credit:** "Designed by Station.Solutions" (not "hosted"). Spec disclaimer strip at the bottom. Run `link-preflight` on every outside link before it goes to anyone.
