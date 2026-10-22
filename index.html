@@ -78,7 +78,7 @@ nav.main a:hover{color:var(--gold-2)}
 @keyframes cue{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1)}100%{transform:scaleY(.2);transform-origin:bottom}}
 
 /* ---------- the film ---------- */
-.film{position:relative;height:460vh}
+.film{position:relative;height:600vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#07131c}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .stage .scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to top,rgba(5,12,18,.9) 0%,rgba(5,12,18,.6) 32%,rgba(5,12,18,0) 64%),linear-gradient(to right,rgba(5,12,18,.72) 0%,rgba(5,12,18,.4) 38%,rgba(5,12,18,0) 62%)}
@@ -209,7 +209,7 @@ footer a:hover{color:var(--gold-2)}
   .brand img{width:44px;height:44px}
   .brand b{font-size:13px}
   nav.main{top:70px}
-  .film{height:420vh}
+  .film{height:540vh}
   .beat{max-width:calc(100vw - 2*var(--gut))}
   .b-hero{bottom:12vh}
   .b-hero h1{font-size:clamp(30px,9vw,40px)}
@@ -261,19 +261,29 @@ footer a:hover{color:var(--gold-2)}
     <div class="cut-dark" id="cutDark"></div>
     <div class="fade" id="fade"></div>
 
-    <div class="beat b-hero" data-in="-0.1" data-peak="0" data-out="0.16">
+    <div class="beat b-hero" data-in="-0.1" data-peak="0" data-out="0.15">
       <p class="kicker">2215 Southwest Freeway · Houston</p>
       <h1>The pharaoh on the freeway is <em>opening his doors again.</em></h1>
       <p>Houston's house of magic opened in 1984, closed after Hurricane Ike, and has been rebuilt behind the same walls.</p>
       <div class="cta"><a class="btn solid" href="#signup">Be first to know</a><a class="btn" href="https://magicislandhtx.com/event-request/">Plan an event</a></div>
     </div>
 
-    <div class="beat b-low" data-in="0.26" data-peak="0.32" data-out="0.60">
+    <div class="beat b-low" data-in="0.20" data-peak="0.24" data-out="0.33">
+      <h2><small>Dinner</small>Green walls,<br>velvet chairs.</h2>
+      <p>The original dining rooms, gilt frames and all, set for the first night back.</p>
+    </div>
+
+    <div class="beat b-low" data-in="0.345" data-peak="0.37" data-out="0.435">
+      <h2><small>Drinks</small>A bar polished<br>and waiting.</h2>
+      <p>Cocktails before the curtain, under the sphinx's eye.</p>
+    </div>
+
+    <div class="beat b-low" data-in="0.46" data-peak="0.50" data-out="0.72">
       <h2><small>Disappearing acts</small>The intimate<br>theatre upstairs.</h2>
       <p>Vegas-style magic, comedians and touring acts, the way the original drew performers from around the world.</p>
     </div>
 
-    <div class="beat b-fin" data-in="0.70" data-peak="0.78" data-out="2">
+    <div class="beat b-fin" data-in="0.76" data-peak="0.81" data-out="2">
       <p class="kicker">Opening soon</p>
       <h2>Dinner, drinks and disappearing acts.</h2>
       <p>Opening date to be announced. Join the list to hear it first, or book the ballroom for a private event now.</p>
@@ -431,10 +441,10 @@ if(FLAT) document.documentElement.classList.add('flat');
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- film config ---------- */
-var FRAME_COUNT=137, CUTS=[34,112];                     // from frames/cuts.json
+var FRAME_COUNT=217, CUTS=[49,87,114,192];                     // from frames/cuts.json
 var HOLD=0.84;                                           // film plays over 0..HOLD, last frame holds under the finale
-var CHAPTERS=[['I','Arrive'],['II','The show'],['III','The finale']];
-var FOCUS=[0.5,0.5,0.5];                              // phone frames are pre-cropped to portrait in work/ (crop x: facade 585, levitation 969, doves 700 of 1920)
+var CHAPTERS=[['I','Arrive'],['II','Dinner'],['III','Drinks'],['IV','The show'],['V','The finale']];
+var FOCUS=[0.5,0.5,0.5,0.5,0.5];                              // phone frames are pre-cropped to portrait in work/ (crop x: open 585, dining 775, bar 725, levitation 969, doves 700 of 1920)
 var PHONE=matchMedia('(pointer:coarse)').matches && innerWidth<900;
 var DIR=PHONE?'frames/phone/':'frames/';
 var DPR=Math.min(devicePixelRatio||1, PHONE?1.5:1.25);
@@ -577,7 +587,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* ---------- boot ---------- */
 addEventListener('resize',size); size();
-if(FLAT){ document.querySelectorAll('.stage,.film').forEach(function(el){ el.style.height=(el.classList.contains('film')? innerHeight*4.6 : innerHeight)+'px'; }); }
+if(FLAT){ document.querySelectorAll('.stage,.film').forEach(function(el){ el.style.height=(el.classList.contains('film')? innerHeight*6.0 : innerHeight)+'px'; }); }
 requested[0]=1; load(0);
 var boot=setInterval(function(){
   if(!loaded[0]) return; clearInterval(boot);
